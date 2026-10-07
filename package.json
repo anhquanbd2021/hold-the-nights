@@ -1,0 +1,1 @@
+{"name":"hold-the-nights-demo","version":"1.0.0","private":true,"type":"module","description":"Hold the Nights Lab — companion interactive demo","engines":{"node":">=24"},"scripts":{"start":"node app/server.ts","test":"node --test \"test/*.test.ts\"","check":"npm test"}}

@@ -1,0 +1,73 @@
+/* tokens.css — direction "night-ledger" (generated; do not hand-edit) */
+:root {
+  color-scheme: light;
+  --color-bg: #faf6ee;
+  --color-text: #2b2114;
+  --color-surface: #fffdf7;
+  --color-accent-fill: #6f4a09;
+  --color-accent-text: #fffdf7;
+  --color-on-accent: #fffdf7;
+  --accent-50: #fdf6ea;
+  --accent-100: #f9e8c8;
+  --accent-200: #f2d49a;
+  --accent-300: #e8b85e;
+  --accent-400: #d99e33;
+  --accent-500: #bd821d;
+  --accent-600: #9a6712;
+  --accent-700: #6f4a09;
+  --accent-800: #4d3407;
+  --accent-900: #332307;
+  --accent-950: #1f1405;
+  --danger-300: #b91c1c;
+  --danger-500: #dc2626;
+  --danger-fill: #fee2e2;
+  --danger-text: #7f1d1d;
+  --step-xs: 12px;
+  --step-sm: 14px;
+  --step-base: 16px;
+  --step-lg: 20px;
+  --step-xl: 28px;
+  --step-2xl: 40px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --font-heading: Fraunces, Georgia, serif;
+  --font-body: Inter, system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --color-bg: #15100a;
+    --color-text: #f3ead9;
+    --color-surface: #241b0f;
+    --color-accent-fill: #e8b85e;
+    --color-accent-text: #1f1405;
+    --color-on-accent: #1f1405;
+    --accent-50: #1f1405;
+    --accent-100: #332307;
+    --accent-200: #4d3407;
+    --accent-300: #6f4a09;
+    --accent-400: #9a6712;
+    --accent-500: #bd821d;
+    --accent-600: #d99e33;
+    --accent-700: #e8b85e;
+    --accent-800: #f2d49a;
+    --accent-900: #f9e8c8;
+    --accent-950: #fdf6ea;
+    --danger-300: #fca5a5;
+    --danger-500: #f87171;
+    --danger-fill: #5c1616;
+    --danger-text: #fee2e2;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}

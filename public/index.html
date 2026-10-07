@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Hold the Nights Lab — two guests race for the same four nights at Loft 42. Search hits a lagging copy; the calendar is the only truth. Hold the nights, then pay — or watch a double-booking happen.">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#faf6ee">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#15100a">
+  <title>Hold the Nights Lab — booking concurrency</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;600&display=swap">
+  <link rel="stylesheet" href="/tokens.css">
+  <link rel="stylesheet" href="/styles.css">
+<!-- pb-shell --><link rel="stylesheet" href="./pb-shell.css"><!-- pb-shell --><!-- pb-back --><link rel="stylesheet" href="./pb-back.css"><!-- pb-back --></head>
+<body>
+<a class="skip-link" href="#race-board">Skip to the race board</a>
+<main>
+  <nav aria-label="Primary"><a aria-current="page" href="/">Lab</a><a href="/guide.html">Guide</a><a href="https://github.com/anhquanbd2021/hold-the-nights">Source</a></nav>
+  <header class="hero">
+    <div><p class="eyebrow">Hold the Nights · a booking-concurrency lab</p><h1>Two guests, four nights, one calendar that tells the truth</h1><p class="lede">Ada and Bo tap Reserve at the same instant for the same stay at Loft 42. Search reads a lagging copy — advertising, not inventory. The calendar, one row per night, is the only source of truth and the only thing that needs a lock.</p></div>
+    <p class="warning"><strong>Educational model.</strong> Six scripted races replay real booking failure modes — deterministic interleavings, not a live reservation system. Nothing leaves your browser.</p>
+  </header>
+
+  <p class="claim">Two people can search at once. Only one can book. Hold the nights, then pay — everything above the calendar is a copy.</p>
+
+  <section aria-labelledby="scenH">
+    <div class="section-heading"><div><p class="eyebrow">Step one</p><h2 id="scenH">Pick a race</h2></div></div>
+    <p class="muted">Six interleavings of the same two guests and the same four nights — each one exercises a different failure mode or the fix.</p>
+    <div class="scenbar" id="scenarioBar" role="group" aria-label="Booking scenarios"></div>
+    <p class="scenlede" id="scenarioLede"></p>
+  </section>
+
+  <section id="race-board" aria-labelledby="boardH">
+    <div class="section-heading"><div><p class="eyebrow">Step two</p><h2 id="boardH">Watch the race</h2></div></div>
+    <div class="board">
+      <div class="panel">
+        <h3>Search index <span class="mini">a copy — allowed to lag</span></h3>
+        <p class="indexline" id="indexLine">Loading…</p>
+      </div>
+      <div class="panel">
+        <h3>Ledger <span class="mini">who paid what</span></h3>
+        <ul class="ledger" id="ledger"><li>No payments yet.</li></ul>
+      </div>
+      <div class="panel wide">
+        <h3>Calendar <span class="mini">one row per night — the only source of truth</span></h3>
+        <div class="nights" id="nights" aria-label="Calendar nights"></div>
+        <div class="legend">
+          <span class="lg-open">open</span>
+          <span class="lg-held">held while paying</span>
+          <span class="lg-booked">booked</span>
+          <span class="lg-double">double-booked</span>
+        </div>
+      </div>
+    </div>
+    <div class="controls" role="group" aria-label="Replay controls">
+      <button id="playBtn" type="button">Play</button>
+      <button id="stepBtn" type="button" class="secondary">Step</button>
+      <button id="resetBtn" type="button" class="secondary">Reset</button>
+      <span id="progress" aria-live="polite"></span>
+    </div>
+    <div class="outcome" id="outcome" hidden></div>
+    <div class="blast" id="blast" hidden></div>
+  </section>
+
+  <section aria-labelledby="traceH">
+    <div class="section-heading"><div><p class="eyebrow">Step three</p><h2 id="traceH">The trace</h2></div></div>
+    <p class="muted">Every event narrates what just happened and snapshots the calendar after it lands — stale reads, rejected holds, and double writes are flagged inline.</p>
+    <ol class="trace" id="trace" aria-label="Race event trace"></ol>
+  </section>
+
+  <p><a href="/guide.html">Read what the lab proves — and what it doesn't</a> · <a href="https://github.com/anhquanbd2021/hold-the-nights">Inspect source and tests</a></p>
+</main>
+<script type="module" src="/app/app.js"></script>
+<!-- pb-shell --><a class="pb-shell" href="https://github.com/anhquanbd2021/hold-the-nights" title="hold-the-nights — an Article Playbook demo (view source)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="2" width="9" height="9" rx="2" fill="rgb(45,212,191)"/><rect x="13" y="2" width="9" height="9" rx="2" fill="rgb(45,212,191)" opacity=".45"/><rect x="2" y="13" width="9" height="9" rx="2" fill="rgb(45,212,191)" opacity=".45"/><rect x="13" y="13" width="9" height="9" rx="4.5" fill="rgb(45,212,191)"/></svg><b>hold-the-nights</b><i>DEMO</i></a><!-- pb-shell --><!-- pb-back --><a class="pb-back" id="pb-back" href="https://github.com/anhquanbd2021/hold-the-nights" title="Back to the article — hold-the-nights">← Article <i>PLAYBOOK</i></a><script>(function(){var a=document.getElementById('pb-back');if(!a)return;var h=location.hostname;if(/^(localhost|127\.0\.0\.1|192\.168\.|10\.|172\.(1[6-9]|2[0-9]|3[01])\.)/.test(h)){a.href='//'+h+':'+(/^(localhost|127\.0\.0\.1)$/.test(h)?'1234':'30082')+'/microsites/article.html?slug=hold-the-nights';}})();</script><!-- pb-back --></body>
+</html>
